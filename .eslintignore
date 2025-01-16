@@ -1,0 +1,9 @@
+
+/.expo
+
+node_modules
+
+dist
+
+expo-env.d.ts
+nativewind-env.d.ts

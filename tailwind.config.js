@@ -1,0 +1,34 @@
+import { colors } from './src/constants/colors'
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  // NOTE: Update this to include the paths to all of your component files.
+  content: ['./app/**/*.{js,jsx,ts,tsx}', './src/**/*.{js,jsx,ts,tsx}'],
+  presets: [require('nativewind/preset')],
+  theme: {
+    extend: {
+      colors: {
+        primary: {
+          DEFAULT: colors.primary.DEFAULT,
+          100: colors.primary[100],
+        },
+        secondary: {
+          DEFAULT: colors.secondary.DEFAULT,
+        },
+        tertiary: {
+          DEFAULT: colors.tertiary.DEFAULT,
+        },
+        support: {
+          DEFAULT: colors.support.DEFAULT,
+        },
+        black: {
+          DEFAULT: colors.black.DEFAULT,
+        },
+        white: {
+          DEFAULT: colors.white.DEFAULT,
+        },
+      },
+    },
+  },
+  plugins: [],
+}
