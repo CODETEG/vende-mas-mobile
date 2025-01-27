@@ -29,10 +29,10 @@ const RHFInput = ({ name, label, className, isPassword, ...rest }: Props) => {
         control={control}
         name={name}
         render={({ field: { onChange, value, onBlur } }) => (
-          <View className='relative'>
+          <View className='relative flex-row'>
             <TextInput
               {...rest}
-              className={`flex-1  font-psemibold text-base w-full h-16 px-4 bg-black-100 rounded-xl border border-black-200 focus:border-secondary ${error ? 'border border-red-500' : ''}`}
+              className={`text-base w-full h-16 px-4 rounded-xl border focus:border-yellow-500 ${error ? 'border border-red-500' : 'border-gray-400'}`}
               placeholderTextColor='#7B7B8B'
               onChangeText={onChange}
               onBlur={onBlur}
@@ -47,7 +47,7 @@ const RHFInput = ({ name, label, className, isPassword, ...rest }: Props) => {
               >
                 <Ionicons
                   name={showPassword ? 'eye' : 'eye-off'}
-                  color='#1F2937'
+                  color='#4B5563'
                   size={22}
                 />
               </Pressable>

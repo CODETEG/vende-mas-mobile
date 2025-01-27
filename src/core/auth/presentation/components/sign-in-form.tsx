@@ -23,7 +23,7 @@ const SignInForm = () => {
 
       <CButton
         onPress={form.handleSubmit(onSubmit)}
-        className='mt-4 w-60 items-center h-14 justify-center rounded-xl bg-slate-200 '
+        className='mt-4 w-60 items-center h-16 justify-center rounded-xl bg-slate-200 '
         disabled={isLoading}
       >
         <CText className='text-black'>Iniciar sesión</CText>

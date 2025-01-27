@@ -7,7 +7,7 @@ export const useSignIn = () => {
     mutationFn: async (values: ISignInReq): Promise<ISignInRes> => {
       const data = await authService.signIn(values)
 
-      localStorage.setItem('token', data!.token)
+      // localStorage.setItem('token', data!.token)
 
       return data!
     },
