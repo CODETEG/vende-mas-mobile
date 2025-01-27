@@ -6,6 +6,8 @@ import { useEffect } from 'react'
 import Toast from 'react-native-toast-message'
 import { StatusBar } from 'expo-status-bar'
 import { colors } from '@/constants/colors'
+import { QueryClientProvider } from '@tanstack/react-query'
+import queryClient from '@/config/http/query-client'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -26,24 +28,26 @@ const RootLayout = () => {
 
   return (
     <>
-      <Stack
-        screenOptions={{
-          headerShown: false,
-          contentStyle: {
-            backgroundColor: colors.black.DEFAULT,
-          },
-        }}
-      >
-        <Stack.Screen name='index' />
+      <QueryClientProvider client={queryClient}>
+        <Stack
+          screenOptions={{
+            headerShown: false,
+            contentStyle: {
+              backgroundColor: colors.white.DEFAULT,
+            },
+          }}
+        >
+          <Stack.Screen name='index' />
 
-        {/* <Stack.Screen name='(auth)' /> */}
+          <Stack.Screen name='(auth)' />
 
-        {/* <Stack.Screen name='(tabs)' /> */}
-      </Stack>
+          {/* <Stack.Screen name='(tabs)' /> */}
+        </Stack>
 
-      <StatusBar style='auto' />
+        <StatusBar style='auto' />
 
-      <Toast />
+        <Toast />
+      </QueryClientProvider>
     </>
   )
 }

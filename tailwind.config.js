@@ -10,16 +10,6 @@ module.exports = {
       colors: {
         primary: {
           DEFAULT: colors.primary.DEFAULT,
-          100: colors.primary[100],
-        },
-        secondary: {
-          DEFAULT: colors.secondary.DEFAULT,
-        },
-        tertiary: {
-          DEFAULT: colors.tertiary.DEFAULT,
-        },
-        support: {
-          DEFAULT: colors.support.DEFAULT,
         },
         black: {
           DEFAULT: colors.black.DEFAULT,

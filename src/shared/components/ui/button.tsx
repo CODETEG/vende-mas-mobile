@@ -1,5 +1,5 @@
-import CButton, { CButtonProps } from '@/custom-components/CButton'
-import CText from '@/custom-components/CText'
+import CButton, { CButtonProps } from '@/custom-components/button'
+import CText from '@/custom-components/text'
 
 interface SButtonProps extends CButtonProps {
   title: string
