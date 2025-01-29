@@ -17,13 +17,18 @@ const SignInForm = () => {
         Bienvenido de vuelta!
       </CText>
 
-      <RHFInput name='username' label='Usuario' />
+      <RHFInput name='username' label='Usuario' className='mt-2' />
 
-      <RHFInput name='password' isPassword label='Contraseña' />
+      <RHFInput
+        name='password'
+        isPassword
+        label='Contraseña'
+        className='mt-2'
+      />
 
       <CButton
         onPress={form.handleSubmit(onSubmit)}
-        className='mt-4 w-60 items-center h-16 justify-center rounded-xl bg-black active:opacity-80'
+        className='mt-6 w-60 items-center h-16 justify-center rounded-xl bg-black active:opacity-80 disabled:opacity-50'
         disabled={isLoading}
       >
         <CText className='text-white'>Iniciar sesión</CText>
