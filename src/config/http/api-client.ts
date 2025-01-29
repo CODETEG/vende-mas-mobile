@@ -147,7 +147,7 @@ const showResponseToast = (response: IApiResponse<unknown>) => {
   // Para mensajes displayable
   Toast.show({
     type: response.success ? 'success' : 'error',
-    text1: response.success ? 'Éxito' : 'Error',
+    text1: response.success ? 'Operación exitosa' : 'Ha ocurrido un error',
     text2: response.message.content.join(' '),
     position: 'top',
     visibilityTime: 3000,
