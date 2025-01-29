@@ -8,6 +8,7 @@ import { StatusBar } from 'expo-status-bar'
 import { colors } from '@/constants/colors'
 import { QueryClientProvider } from '@tanstack/react-query'
 import queryClient from '@/config/http/query-client'
+import { toastConfig } from '@/config/toast/toast-config'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -46,7 +47,7 @@ const RootLayout = () => {
 
         <StatusBar style='auto' />
 
-        <Toast />
+        <Toast config={toastConfig} />
       </QueryClientProvider>
     </>
   )

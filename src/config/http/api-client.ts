@@ -7,6 +7,7 @@ import axios, {
 } from 'axios'
 import { IApiResponse } from './api-response'
 import { tokenStorage } from '@/shared/utils/token-storage'
+import Toast from 'react-native-toast-message'
 
 class ApiClient {
   private static instance: AxiosInstance
@@ -49,12 +50,25 @@ class ApiClient {
       // Interceptor de response
       ApiClient.instance.interceptors.response.use(
         (response: AxiosResponse<IApiResponse<unknown>>) => {
-          console.log('📡 Axios Response:', response)
+          console.log('📡 Axios Response:', response.data)
+          showResponseToast(response.data)
 
           return response
         },
         (error: AxiosError<IApiResponse<unknown>>) => {
           console.log('📡 Axios Error:', error.response?.data)
+
+          if (error.response?.data) {
+            showResponseToast(error.response.data)
+          } else {
+            // Para errores no controlados (como errores de red)
+            Toast.show({
+              type: 'error',
+              text1: 'Error',
+              text2: 'Ha ocurrido un error inesperado',
+              position: 'top',
+            })
+          }
 
           return Promise.reject(error)
         },
@@ -103,4 +117,39 @@ export const apiClient = {
     const response = await client.delete<IApiResponse<T>>(url, config)
     return response.data
   },
+}
+
+const showResponseToast = (response: IApiResponse<unknown>) => {
+  const isProduction = process.env.NODE_ENV === 'production'
+
+  // Si no es displayable y estamos en producción, no mostramos nada
+  if (!response.message.displayable && isProduction) {
+    return
+  }
+
+  // Para mensajes no displayable en desarrollo
+  if (!response.message.displayable) {
+    Toast.show({
+      type: 'info',
+      text1: '🛠 Debug Message',
+      text2: response.message.content.join(' '),
+      position: 'top',
+      visibilityTime: 3000,
+      props: {
+        style: {
+          borderLeftColor: '#2196F3',
+        },
+      },
+    })
+    return
+  }
+
+  // Para mensajes displayable
+  Toast.show({
+    type: response.success ? 'success' : 'error',
+    text1: response.success ? 'Éxito' : 'Error',
+    text2: response.message.content.join(' '),
+    position: 'top',
+    visibilityTime: 3000,
+  })
 }
