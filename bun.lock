@@ -12,10 +12,10 @@
         "axios": "^1.7.9",
         "expo": "~52.0.25",
         "expo-blur": "~14.0.3",
-        "expo-constants": "~17.0.4",
+        "expo-constants": "~17.0.5",
         "expo-font": "~13.0.3",
         "expo-haptics": "~14.0.1",
-        "expo-linking": "~7.0.4",
+        "expo-linking": "~7.0.5",
         "expo-router": "~4.0.16",
         "expo-splash-screen": "~0.29.20",
         "expo-status-bar": "~2.0.1",
@@ -1068,7 +1068,7 @@
 
     "expo-blur": ["expo-blur@14.0.3", "", { "peerDependencies": { "expo": "*", "react": "*", "react-native": "*" } }, "sha512-BL3xnqBJbYm3Hg9t/HjNjdeY7N/q8eK5tsLYxswWG1yElISWZmMvrXYekl7XaVCPfyFyz8vQeaxd7q74ZY3Wrw=="],
 
-    "expo-constants": ["expo-constants@17.0.4", "", { "dependencies": { "@expo/config": "~10.0.8", "@expo/env": "~0.4.1" }, "peerDependencies": { "expo": "*", "react-native": "*" } }, "sha512-5c0VlZycmDyQUCMCr3Na3cpHAsVJJ+5o6KkkD4rmATQZ0++Xp/S2gpnjWyEo2riRmO91vxoyHwmAySXuktJddQ=="],
+    "expo-constants": ["expo-constants@17.0.5", "", { "dependencies": { "@expo/config": "~10.0.8", "@expo/env": "~0.4.1" }, "peerDependencies": { "expo": "*", "react-native": "*" } }, "sha512-6SHXh32jCB+vrp2TRDNkoGoM421eOBPZIXX9ixI0hKKz71tIjD+LMr/P+rGUd/ks312MP3WK3j5vcYYPkCD8tQ=="],
 
     "expo-file-system": ["expo-file-system@18.0.7", "", { "dependencies": { "web-streams-polyfill": "^3.3.2" }, "peerDependencies": { "expo": "*", "react-native": "*" } }, "sha512-6PpbQfogMXdzOsJzlJayy5qf40IfIHhudtAOzr32RlRYL4Hkmk3YcR9jG0PWQ0rklJfAhbAdP63yOcN+wDgzaA=="],
 
@@ -1078,7 +1078,7 @@
 
     "expo-keep-awake": ["expo-keep-awake@14.0.2", "", { "peerDependencies": { "expo": "*", "react": "*" } }, "sha512-71XAMnoWjKZrN8J7Q3+u0l9Ytp4OfhNAYz8BCWF1/9aFUw09J3I7Z5DuI3MUsVMa/KWi+XhG+eDUFP8cVA19Uw=="],
 
-    "expo-linking": ["expo-linking@7.0.4", "", { "dependencies": { "expo-constants": "~17.0.4", "invariant": "^2.2.4" }, "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-i+QaFc2zwOoq/ajePVWC+op3cOKC6nd6Wj/BJtukU71byTAbxDhbi+3m0ZFbh2i1/v/iIXRqrl3PvQcKNklPkw=="],
+    "expo-linking": ["expo-linking@7.0.5", "", { "dependencies": { "expo-constants": "~17.0.5", "invariant": "^2.2.4" }, "peerDependencies": { "react": "*", "react-native": "*" } }, "sha512-3KptlJtcYDPWohk0MfJU75MJFh2ybavbtcSd84zEPfw9s1q3hjimw3sXnH03ZxP54kiEWldvKmmnGcVffBDB1g=="],
 
     "expo-modules-autolinking": ["expo-modules-autolinking@2.0.7", "", { "dependencies": { "@expo/spawn-async": "^1.7.2", "chalk": "^4.1.0", "commander": "^7.2.0", "fast-glob": "^3.2.5", "find-up": "^5.0.0", "fs-extra": "^9.1.0", "require-from-string": "^2.0.2", "resolve-from": "^5.0.0" }, "bin": { "expo-modules-autolinking": "bin/expo-modules-autolinking.js" } }, "sha512-rkGc6a/90AC3q8wSy4V+iIpq6Fd0KXmQICKrvfmSWwrMgJmLfwP4QTrvLYPYOOMjFwNJcTaohcH8vzW/wYKrMg=="],
 
@@ -2413,6 +2413,10 @@
     "eslint-plugin-react/doctrine": ["doctrine@2.1.0", "", { "dependencies": { "esutils": "^2.0.2" } }, "sha512-35mSku4ZXK0vfCuHEDAwt55dg2jNajHZ1odvF+8SSr82EsZY4QmXfuWso8oEd8zRhVObSN18aM0CjSdoBX7zIw=="],
 
     "eslint-plugin-react/resolve": ["resolve@2.0.0-next.5", "", { "dependencies": { "is-core-module": "^2.13.0", "path-parse": "^1.0.7", "supports-preserve-symlinks-flag": "^1.0.0" }, "bin": { "resolve": "bin/resolve" } }, "sha512-U7WjGVG9sH8tvjW5SmGbQuui75FiyjAX72HX15DwBBwF9dNiQZRQAg9nnPhYy+TUnE0+VcrttuvNI8oSxZcocA=="],
+
+    "expo/expo-constants": ["expo-constants@17.0.4", "", { "dependencies": { "@expo/config": "~10.0.8", "@expo/env": "~0.4.1" }, "peerDependencies": { "expo": "*", "react-native": "*" } }, "sha512-5c0VlZycmDyQUCMCr3Na3cpHAsVJJ+5o6KkkD4rmATQZ0++Xp/S2gpnjWyEo2riRmO91vxoyHwmAySXuktJddQ=="],
+
+    "expo-asset/expo-constants": ["expo-constants@17.0.4", "", { "dependencies": { "@expo/config": "~10.0.8", "@expo/env": "~0.4.1" }, "peerDependencies": { "expo": "*", "react-native": "*" } }, "sha512-5c0VlZycmDyQUCMCr3Na3cpHAsVJJ+5o6KkkD4rmATQZ0++Xp/S2gpnjWyEo2riRmO91vxoyHwmAySXuktJddQ=="],
 
     "expo-modules-autolinking/commander": ["commander@7.2.0", "", {}, "sha512-QrWXB+ZQSVPmIWIhtEO9H+gwHaMGYiF5ChvoJ+K9ZGHG/sVsa6yiesAD1GC/x46sET00Xlwo1u49RVVVzvcSkw=="],
 

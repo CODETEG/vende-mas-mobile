@@ -9,7 +9,7 @@ class ApiClient {
   public static getInstance(): AxiosInstance {
     if (!ApiClient.instance) {
       ApiClient.instance = axios.create({
-        baseURL: process.env.NEXT_PUBLIC_API_URL,
+        baseURL: process.env.EXPO_PUBLIC_API_URL,
         timeout: 10000,
         headers: {
           'Content-Type': 'application/json',
@@ -17,21 +17,31 @@ class ApiClient {
       })
 
       // Interceptor de request
-      ApiClient.instance.interceptors.request.use(
-        (config) => {
-          const token = localStorage.getItem('token')
-          if (token) {
-            config.headers['Authorization'] = `Bearer ${token}`
-          }
-          return config
-        },
-        (error) => Promise.reject(error),
-      )
+      // ApiClient.instance.interceptors.request.use(
+      //   (config) => {
+      //     const token = localStorage.getItem('token')
+      //     if (token) {
+      //       config.headers['Authorization'] = `Bearer ${token}`
+      //     }
+      //     return config
+      //   },
+      //   (error) => Promise.reject(error),
+      // )
+
+      ApiClient.instance.interceptors.request.use((config) => {
+        // eslint-disable-next-line no-console
+        console.log('📡 Axios Request:', {
+          url: process.env.EXPO_PUBLIC_API_URL + config.url!,
+          method: config.method,
+          headers: config.headers,
+          data: config.data,
+        })
+        return config
+      })
 
       // Interceptor de response
       ApiClient.instance.interceptors.response.use(
         (response: AxiosResponse<IApiResponse<unknown>>) => {
-          // Transformación de respuesta si es necesario
           return response
         },
         (error) => {
