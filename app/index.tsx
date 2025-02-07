@@ -17,7 +17,7 @@ const HomePage = () => {
         await validateToken.mutateAsync()
         setIsLoading(false)
         // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (error) {
+      } catch (e) {
         setIsLoading(false)
       }
     }

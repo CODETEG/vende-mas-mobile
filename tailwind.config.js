@@ -11,11 +11,8 @@ module.exports = {
         primary: {
           DEFAULT: colors.primary.DEFAULT,
         },
-        black: {
-          DEFAULT: colors.black.DEFAULT,
-        },
-        white: {
-          DEFAULT: colors.white.DEFAULT,
+        secondary: {
+          DEFAULT: colors.secondary.DEFAULT,
         },
       },
     },

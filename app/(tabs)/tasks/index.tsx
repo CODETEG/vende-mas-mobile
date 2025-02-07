@@ -3,7 +3,7 @@ import { View, Text } from 'react-native'
 const TasksPage = () => {
   return (
     <View>
-      <Text>TasksPage</Text>
+      <Text>Task</Text>
     </View>
   )
 }

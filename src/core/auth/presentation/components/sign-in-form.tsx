@@ -13,7 +13,7 @@ const SignInForm = () => {
     <FormProvider {...form}>
       <CImage source={images.frenecIcon} resizeMode='contain' />
 
-      <CText className='text-2xl text-gray-900 font-medium my-4'>
+      <CText className='text-2xl text-primary font-medium my-4'>
         Bienvenido de vuelta!
       </CText>
 
@@ -28,7 +28,7 @@ const SignInForm = () => {
 
       <CButton
         onPress={form.handleSubmit(onSubmit)}
-        className='mt-6 w-60 items-center h-16 justify-center rounded-xl bg-black active:opacity-80 disabled:opacity-50'
+        className='mt-6 w-60 items-center h-16 justify-center rounded-xl bg-primary active:opacity-80 disabled:opacity-50'
         disabled={isLoading}
       >
         <CText className='text-white'>Iniciar sesión</CText>

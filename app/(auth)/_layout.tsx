@@ -8,7 +8,8 @@ const AuthLayout = () => {
         headerShown: false,
         contentStyle: {
           paddingHorizontal: 16,
-          backgroundColor: colors.white.DEFAULT,
+          backgroundColor: colors.secondary.DEFAULT,
+          // backgroundColor: '#fff',
         },
       }}
     >

@@ -36,7 +36,7 @@ const RootLayout = () => {
             screenOptions={{
               headerShown: false,
               contentStyle: {
-                backgroundColor: colors.white.DEFAULT,
+                backgroundColor: colors.secondary.DEFAULT,
               },
             }}
           >
@@ -47,7 +47,7 @@ const RootLayout = () => {
             <Stack.Screen name='(tabs)' />
           </Stack>
 
-          <StatusBar style='auto' />
+          <StatusBar style='inverted' />
 
           <Toast config={toastConfig} />
         </GestureHandlerRootView>
