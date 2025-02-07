@@ -1,5 +1,4 @@
 import { ScrollViewProps, ScrollView } from 'react-native'
-import React from 'react'
 
 export type CScrollViewProps = ScrollViewProps
 

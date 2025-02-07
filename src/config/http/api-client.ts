@@ -7,7 +7,8 @@ import axios, {
 } from 'axios'
 import { IApiResponse } from './api-response'
 import { tokenStorage } from '@/common/utils/token-storage'
-import Toast from 'react-native-toast-message'
+import { useAuthStore } from '@/core/auth/context/use-auth-store'
+import { showErrorToast, showResponseToast } from '@/common/utils/toast-util'
 
 class ApiClient {
   private static instance: AxiosInstance
@@ -24,7 +25,6 @@ class ApiClient {
         },
       })
 
-      // Interceptor de request
       ApiClient.instance.interceptors.request.use(
         async (config) => {
           const token = await tokenStorage.getToken()
@@ -55,19 +55,20 @@ class ApiClient {
 
           return response
         },
-        (error: AxiosError<IApiResponse<unknown>>) => {
+        async (error: AxiosError<IApiResponse<unknown>>) => {
           console.log('📡 Axios Error:', error.response?.data)
 
-          if (error.response?.data) {
+          if (error.response?.status === 401) {
+            await tokenStorage.removeToken()
+
+            const clearUser = useAuthStore.getState().clearUser
+            clearUser()
+
+            showErrorToast('Vuelve a iniciar sesión')
+          } else if (error.response?.data) {
             showResponseToast(error.response.data)
           } else {
-            // Para errores no controlados (como errores de red)
-            Toast.show({
-              type: 'error',
-              text1: 'Error',
-              text2: 'Ha ocurrido un error inesperado',
-              position: 'top',
-            })
+            showErrorToast('Ha ocurrido un error')
           }
 
           return Promise.reject(error)
@@ -117,39 +118,4 @@ export const apiClient = {
     const response = await client.delete<IApiResponse<T>>(url, config)
     return response.data
   },
-}
-
-const showResponseToast = (response: IApiResponse<unknown>) => {
-  const isProduction = process.env.NODE_ENV === 'production'
-
-  // Si no es displayable y estamos en producción, no mostramos nada
-  if (!response.message.displayable && isProduction) {
-    return
-  }
-
-  // Para mensajes no displayable en desarrollo
-  if (!response.message.displayable) {
-    Toast.show({
-      type: 'info',
-      text1: '🛠 Debug Message',
-      text2: response.message.content.join(' '),
-      position: 'top',
-      visibilityTime: 3000,
-      props: {
-        style: {
-          borderLeftColor: '#2196F3',
-        },
-      },
-    })
-    return
-  }
-
-  // Para mensajes displayable
-  Toast.show({
-    type: response.success ? 'success' : 'error',
-    text1: response.success ? 'Operación exitosa' : 'Ha ocurrido un error',
-    text2: response.message.content.join(' '),
-    position: 'top',
-    visibilityTime: 3000,
-  })
 }

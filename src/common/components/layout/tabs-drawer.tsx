@@ -1,4 +1,3 @@
-import React from 'react'
 import {
   DrawerContentScrollView,
   DrawerItemList,
@@ -9,10 +8,16 @@ import { Ionicons } from '@expo/vector-icons'
 import CView from '@/custom-components/view'
 import CImage from '@/custom-components/image'
 import images from '@/constants/images'
+import { useSignOut } from '@/core/auth/hooks/use-auth-service'
+import { router } from 'expo-router'
 
 const TabsDrawer = (props: DrawerContentComponentProps) => {
-  const handleLogout = () => {
-    props.navigation.navigate('Login')
+  const signOut = useSignOut()
+
+  const handleLogout = async () => {
+    await signOut()
+
+    router.replace('/')
   }
 
   return (

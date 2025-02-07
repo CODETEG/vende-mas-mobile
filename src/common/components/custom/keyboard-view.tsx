@@ -1,5 +1,4 @@
 import { KeyboardAvoidingViewProps, KeyboardAvoidingView } from 'react-native'
-import React from 'react'
 
 export type CKeyboardViewProps = KeyboardAvoidingViewProps
 

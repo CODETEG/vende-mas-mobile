@@ -1,8 +1,8 @@
 import { useForm } from 'react-hook-form'
 import { z } from 'zod'
 import { zodResolver } from '@hookform/resolvers/zod'
-import { useSignIn } from './use-auth-api'
 import { router } from 'expo-router'
+import { useSignIn } from './use-auth-service'
 
 const schema = z.object({
   username: z
@@ -30,7 +30,7 @@ export const useSignInForm = () => {
   const onSubmit = async (data: FormFields) => {
     await mutateAsync(data)
 
-    router.push('/(tabs)/tasks')
+    router.replace('/(tabs)/tasks')
   }
 
   return {
