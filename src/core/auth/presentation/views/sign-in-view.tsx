@@ -1,5 +1,5 @@
-import CKeyboardView from '@/custom-components/keyboard-view'
-import CScrollView from '@/custom-components/scroll-view'
+import CKeyboardView from '@/common/components/custom/keyboard-view'
+import CScrollView from '@/common/components/custom/scroll-view'
 import SignInForm from '../components/sign-in-form'
 
 const SignInView = () => {

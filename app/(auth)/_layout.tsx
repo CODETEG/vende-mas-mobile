@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { ActivityIndicator, View } from 'react-native'
 import { colors } from '@/constants/colors'
-import { tokenStorage } from '@/shared/utils/token-storage'
+import { tokenStorage } from '@/common/utils/token-storage'
 import { Redirect, Stack } from 'expo-router'
 
 const AuthLayout = () => {

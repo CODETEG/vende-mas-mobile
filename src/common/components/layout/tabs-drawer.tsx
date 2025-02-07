@@ -1,0 +1,49 @@
+import React from 'react'
+import {
+  DrawerContentScrollView,
+  DrawerItemList,
+  DrawerContentComponentProps,
+  DrawerItem,
+} from '@react-navigation/drawer'
+import { Ionicons } from '@expo/vector-icons'
+import CView from '@/custom-components/view'
+import CImage from '@/custom-components/image'
+import images from '@/constants/images'
+
+const TabsDrawer = (props: DrawerContentComponentProps) => {
+  const handleLogout = () => {
+    props.navigation.navigate('Login')
+  }
+
+  return (
+    <CView className='flex-1'>
+      <DrawerContentScrollView {...props} contentContainerStyle={{ flex: 1 }}>
+        {/* Encabezado del Drawer */}
+        <CView className='flex justify-center items-center mb-5 h-28'>
+          <CImage
+            source={images.frenecIcon}
+            resizeMode='contain'
+            className='h-28'
+          />
+        </CView>
+
+        {/* Lista de items */}
+        <DrawerItemList {...props} />
+      </DrawerContentScrollView>
+
+      <CView className='border-t border-gray-200 mb-2'>
+        <DrawerItem
+          style={{ paddingHorizontal: 10 }}
+          label='Cerrar Sesión'
+          onPress={handleLogout}
+          icon={({ color, size }) => (
+            <Ionicons name='log-out-outline' size={size} color='red' />
+          )}
+          labelStyle={{ color: 'red' }}
+        />
+      </CView>
+    </CView>
+  )
+}
+
+export default TabsDrawer

@@ -4,10 +4,10 @@
     "strict": true,
     "paths": {
       "@/custom-components/*": [
-        "./src/shared/components/custom/*"
+        "./src/common/components/custom/*"
       ],
       "@/components/*": [
-        "./src/shared/components/*"
+        "./src/common/components/*"
       ],
       "@/constants/*": [
         "./src/constants/*"

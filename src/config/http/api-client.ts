@@ -6,7 +6,7 @@ import axios, {
   AxiosResponse,
 } from 'axios'
 import { IApiResponse } from './api-response'
-import { tokenStorage } from '@/shared/utils/token-storage'
+import { tokenStorage } from '@/common/utils/token-storage'
 import Toast from 'react-native-toast-message'
 
 class ApiClient {

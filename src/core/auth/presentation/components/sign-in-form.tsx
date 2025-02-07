@@ -1,10 +1,10 @@
-import CImage from '@/custom-components/image'
+import CImage from '@/common/components/custom/image'
 import images from '@/constants/images'
-import CText from '@/custom-components/text'
+import CText from '@/common/components/custom/text'
 import { useSignInForm } from '../../hooks/use-sign-in-form'
-import CButton from '@/custom-components/button'
+import CButton from '@/common/components/custom/button'
 import { FormProvider } from 'react-hook-form'
-import RHFInput from '@/components/rhf/input'
+import RHFInput from '@/common/components/rhf/input'
 
 const SignInForm = () => {
   const { form, isLoading, onSubmit } = useSignInForm()
