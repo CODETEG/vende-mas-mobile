@@ -9,6 +9,7 @@ import { colors } from '@/constants/colors'
 import { QueryClientProvider } from '@tanstack/react-query'
 import queryClient from '@/config/http/query-client'
 import { toastConfig } from '@/config/toast/toast-config'
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -30,24 +31,26 @@ const RootLayout = () => {
   return (
     <>
       <QueryClientProvider client={queryClient}>
-        <Stack
-          screenOptions={{
-            headerShown: false,
-            contentStyle: {
-              backgroundColor: colors.white.DEFAULT,
-            },
-          }}
-        >
-          <Stack.Screen name='index' />
+        <GestureHandlerRootView style={{ flex: 1 }}>
+          <Stack
+            screenOptions={{
+              headerShown: false,
+              contentStyle: {
+                backgroundColor: colors.white.DEFAULT,
+              },
+            }}
+          >
+            <Stack.Screen name='index' />
 
-          <Stack.Screen name='(auth)' />
+            <Stack.Screen name='(auth)' />
 
-          <Stack.Screen name='(tabs)' />
-        </Stack>
+            <Stack.Screen name='(tabs)' />
+          </Stack>
 
-        <StatusBar style='auto' />
+          <StatusBar style='auto' />
 
-        <Toast config={toastConfig} />
+          <Toast config={toastConfig} />
+        </GestureHandlerRootView>
       </QueryClientProvider>
     </>
   )

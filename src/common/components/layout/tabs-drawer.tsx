@@ -10,14 +10,22 @@ import CImage from '@/custom-components/image'
 import images from '@/constants/images'
 import { useSignOut } from '@/core/auth/hooks/use-auth-service'
 import { router } from 'expo-router'
+import { useApiToast } from '@/common/hooks/use-api-toast'
 
 const TabsDrawer = (props: DrawerContentComponentProps) => {
   const signOut = useSignOut()
+  const { showToast } = useApiToast()
 
   const handleLogout = async () => {
     await signOut()
 
     router.replace('/')
+
+    showToast(
+      'Sesión cerrada',
+      { content: ['Hasta luego, esperamos verte pronto.'], displayable: true },
+      true,
+    )
   }
 
   return (

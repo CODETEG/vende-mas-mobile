@@ -8,6 +8,7 @@ const CScrollView = ({
 }: CScrollViewProps) => {
   return (
     <ScrollView
+      keyboardShouldPersistTaps='handled'
       showsVerticalScrollIndicator={showsVerticalScrollIndicator}
       {...rest}
     />

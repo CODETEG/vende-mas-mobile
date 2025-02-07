@@ -10,7 +10,7 @@ type ToastConfig = {
 
 export const useApiToast = (config?: ToastConfig) => {
   const showToast = useCallback(
-    (message: IApiMessage, success: boolean) => {
+    (title: string, message: IApiMessage, success: boolean) => {
       const isProduction = process.env.NODE_ENV === 'production'
 
       // Si no es displayable y estamos en producción, no mostramos nada
@@ -45,7 +45,7 @@ export const useApiToast = (config?: ToastConfig) => {
       // Para mensajes displayable
       Toast.show({
         type: success ? 'success' : 'error',
-        text1: success ? 'Éxito' : 'Error',
+        text1: title,
         text2: message.content.join(' '),
         ...baseConfig,
       })
@@ -54,8 +54,8 @@ export const useApiToast = (config?: ToastConfig) => {
   )
 
   const showApiResponse = useCallback(
-    <T,>(response: IApiResponse<T>) => {
-      showToast(response.message, response.success)
+    <T,>(title: string, response: IApiResponse<T>) => {
+      showToast(title, response.message, response.success)
     },
     [showToast],
   )

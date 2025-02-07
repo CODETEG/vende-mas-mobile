@@ -5,10 +5,7 @@ import SignInForm from '../components/sign-in-form'
 const SignInView = () => {
   return (
     <CKeyboardView>
-      <CScrollView
-        showsVerticalScrollIndicator={false}
-        contentContainerClassName='items-center justify-center flex-grow pb-20 gap-5'
-      >
+      <CScrollView contentContainerClassName='items-center justify-center flex-grow pb-20 gap-5'>
         <SignInForm />
       </CScrollView>
     </CKeyboardView>
