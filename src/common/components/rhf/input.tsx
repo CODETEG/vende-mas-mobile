@@ -2,7 +2,12 @@ import { useState } from 'react'
 import { Controller, useFormContext } from 'react-hook-form'
 import { Ionicons } from '@expo/vector-icons'
 
-import { View, Text, TextInput, TextInputProps, Pressable } from 'react-native'
+import { TextInputProps, Pressable } from 'react-native'
+import CView from '@/custom-components/view'
+import CText from '@/custom-components/text'
+import { cn } from '@/common/utils/styles'
+import CTextInput from '@/custom-components/text-input'
+import { useThemeColor } from '@/common/hooks/use-theme-color'
 
 interface Props extends TextInputProps {
   name: string
@@ -12,6 +17,8 @@ interface Props extends TextInputProps {
 }
 
 const RHFInput = ({ name, label, className, isPassword, ...rest }: Props) => {
+  const iconColor = useThemeColor({}, 'primary')
+
   const [showPassword, setShowPassword] = useState(false)
 
   const {
@@ -22,22 +29,24 @@ const RHFInput = ({ name, label, className, isPassword, ...rest }: Props) => {
   const error = errors[name]?.message
 
   return (
-    <View className={`gap-2 ${className} w-full`}>
-      <Text className='text-gray-700 text-sm'>{label}</Text>
+    <CView className={cn('gap-2 w-full', className)}>
+      <CText className='text-sm font-medium'>{label}</CText>
 
       <Controller
         control={control}
         name={name}
         render={({ field: { onChange, value, onBlur } }) => (
-          <View className='relative flex-row'>
-            <TextInput
-              {...rest}
-              className={`text-base w-full h-16 px-4 rounded-xl border focus:border-yellow-500 ${error ? 'border border-red-500' : 'border-gray-400'}`}
-              placeholderTextColor='#7B7B8B'
+          <CView className='relative flex-row'>
+            <CTextInput
+              className={cn(
+                'bg-light-support dark:bg-dark-support w-full min-h-16 h-auto px-4 rounded-xl border border-light-primary/20 dark:border-dark-primary/30 focus:border-light-primary/50 dark:focus:border-dark-primary/60 placeholder:text-light-primary/50 dark:placeholder:text-dark-primary/50 text-light-primary dark:text-dark-primary',
+                error && 'border-red-500 dark:border-red-500',
+              )}
               onChangeText={onChange}
               onBlur={onBlur}
               value={value}
               secureTextEntry={isPassword && !showPassword}
+              {...rest}
             />
 
             {isPassword && (
@@ -47,19 +56,19 @@ const RHFInput = ({ name, label, className, isPassword, ...rest }: Props) => {
               >
                 <Ionicons
                   name={showPassword ? 'eye' : 'eye-off'}
-                  color='#4B5563'
+                  color={iconColor}
                   size={22}
                 />
               </Pressable>
             )}
-          </View>
+          </CView>
         )}
       />
 
       {error && (
-        <Text className='text-red-500 text-sm font-pregular'>{`${error}`}</Text>
+        <CText className='text-red-500 dark:text-red-500 text-sm'>{`${error}`}</CText>
       )}
-    </View>
+    </CView>
   )
 }
 

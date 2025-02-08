@@ -36,6 +36,6 @@ export const useSignInForm = () => {
   return {
     form,
     isLoading: isPending,
-    onSubmit,
+    onSubmit: form.handleSubmit(onSubmit),
   }
 }

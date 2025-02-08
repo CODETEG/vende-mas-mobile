@@ -1,5 +1,6 @@
 import CButton, { CButtonProps } from '@/common/components/custom/button'
 import CText from '@/common/components/custom/text'
+import { cn } from '@/common/utils/styles'
 
 interface SButtonProps extends CButtonProps {
   title: string
@@ -10,16 +11,23 @@ const SButton = ({
   title,
   onPress,
   disabled,
+  className,
   textClassname,
   ...rest
 }: SButtonProps) => {
   return (
     <CButton
-      {...rest}
       disabled={disabled}
-      className={`bg-secondary rounded-xl min-h-[58px] justify-center active:opacity-70 items-center ${disabled ? 'opacity-50' : ''}`}
+      className={cn('rounded-xl', className)}
+      onPress={onPress}
+      {...rest}
     >
-      <CText className={`text-white font-psemibold text-lg ${textClassname}`}>
+      <CText
+        className={cn(
+          'text-light-support dark:text-light-support font-semibold text-lg',
+          textClassname,
+        )}
+      >
         {title}
       </CText>
     </CButton>

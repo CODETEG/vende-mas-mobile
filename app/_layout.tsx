@@ -5,11 +5,11 @@ import { useFonts } from 'expo-font'
 import { useEffect } from 'react'
 import Toast from 'react-native-toast-message'
 import { StatusBar } from 'expo-status-bar'
-import { colors } from '@/constants/colors'
 import { QueryClientProvider } from '@tanstack/react-query'
 import queryClient from '@/config/http/query-client'
 import { toastConfig } from '@/config/toast/toast-config'
 import { GestureHandlerRootView } from 'react-native-gesture-handler'
+import { useThemeColor } from '@/common/hooks/use-theme-color'
 
 SplashScreen.preventAutoHideAsync()
 
@@ -17,6 +17,7 @@ const RootLayout = () => {
   const [loaded] = useFonts({
     SpaceMono: require('../src/assets/fonts/SpaceMono-Regular.ttf'),
   })
+  const bgColor = useThemeColor({}, 'tertiary')
 
   useEffect(() => {
     if (loaded) {
@@ -36,7 +37,7 @@ const RootLayout = () => {
             screenOptions={{
               headerShown: false,
               contentStyle: {
-                backgroundColor: colors.secondary.DEFAULT,
+                backgroundColor: bgColor,
               },
             }}
           >

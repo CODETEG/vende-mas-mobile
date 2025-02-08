@@ -1,4 +1,4 @@
-import { colors } from '@/constants/colors'
+import { useThemeColor } from '@/common/hooks/use-theme-color'
 import { useAuthStore } from '@/core/auth/context/use-auth-store'
 import { useValidateToken } from '@/core/auth/hooks/use-auth-service'
 import CView from '@/custom-components/view'
@@ -7,6 +7,7 @@ import { useEffect, useState } from 'react'
 import { ActivityIndicator } from 'react-native'
 
 const HomePage = () => {
+  const primaryColor = useThemeColor({}, 'primary')
   const validateToken = useValidateToken()
   const { user } = useAuthStore()
   const [isLoading, setIsLoading] = useState(true)
@@ -31,7 +32,7 @@ const HomePage = () => {
       <CView
         style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}
       >
-        <ActivityIndicator size='large' color={colors.primary.DEFAULT} />
+        <ActivityIndicator size='large' color={primaryColor} />
       </CView>
     )
   }

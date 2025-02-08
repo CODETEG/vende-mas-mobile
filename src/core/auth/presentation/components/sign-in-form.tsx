@@ -2,9 +2,9 @@ import CImage from '@/common/components/custom/image'
 import images from '@/constants/images'
 import CText from '@/common/components/custom/text'
 import { useSignInForm } from '../../hooks/use-sign-in-form'
-import CButton from '@/common/components/custom/button'
 import { FormProvider } from 'react-hook-form'
 import RHFInput from '@/common/components/rhf/input'
+import SButton from '@/components/ui/button'
 
 const SignInForm = () => {
   const { form, isLoading, onSubmit } = useSignInForm()
@@ -13,26 +13,29 @@ const SignInForm = () => {
     <FormProvider {...form}>
       <CImage source={images.frenecIcon} resizeMode='contain' />
 
-      <CText className='text-2xl text-primary font-medium my-4'>
-        Bienvenido de vuelta!
-      </CText>
-
-      <RHFInput name='username' label='Usuario' className='mt-2' />
+      <CText className='text-2xl font-medium my-4'>Bienvenido de vuelta!</CText>
 
       <RHFInput
+        placeholder='chu2409'
+        name='username'
+        label='Usuario'
+        className='mt-2'
+      />
+
+      <RHFInput
+        placeholder='********'
         name='password'
         isPassword
         label='Contraseña'
         className='mt-2'
       />
 
-      <CButton
-        onPress={form.handleSubmit(onSubmit)}
-        className='mt-6 w-60 items-center h-16 justify-center rounded-xl bg-primary active:opacity-80 disabled:opacity-50'
+      <SButton
+        onPress={onSubmit}
+        className='mt-6 w-60 items-center h-16 justify-center'
         disabled={isLoading}
-      >
-        <CText className='text-white'>Iniciar sesión</CText>
-      </CButton>
+        title='Iniciar sesión'
+      />
 
       {/* <CView className='justify-center pt-5 flex-row gap-2'>
         <CText className='text-lg text-gray-100 font-pregular'>

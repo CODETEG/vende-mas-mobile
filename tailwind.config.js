@@ -8,11 +8,33 @@ module.exports = {
   theme: {
     extend: {
       colors: {
-        primary: {
-          DEFAULT: colors.primary.DEFAULT,
+        light: {
+          primary: {
+            DEFAULT: colors.light.primary,
+          },
+          secondary: {
+            DEFAULT: colors.light.secondary,
+          },
+          tertiary: {
+            DEFAULT: colors.light.tertiary,
+          },
+          support: {
+            DEFAULT: colors.light.support,
+          },
         },
-        secondary: {
-          DEFAULT: colors.secondary.DEFAULT,
+        dark: {
+          primary: {
+            DEFAULT: colors.dark.primary,
+          },
+          secondary: {
+            DEFAULT: colors.dark.secondary,
+          },
+          tertiary: {
+            DEFAULT: colors.dark.tertiary,
+          },
+          support: {
+            DEFAULT: colors.dark.support,
+          },
         },
       },
     },

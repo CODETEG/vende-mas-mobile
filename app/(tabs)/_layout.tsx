@@ -1,25 +1,29 @@
-import { colors } from '@/constants/colors'
 import { Ionicons } from '@expo/vector-icons'
 import { Drawer } from 'expo-router/drawer'
 import TabsDrawer from '@/components/layout/tabs-drawer'
 import { StatusBar } from 'expo-status-bar'
+import { useThemeColor } from '@/common/hooks/use-theme-color'
 
 const TabsLayout = () => {
+  const bgColor = useThemeColor({}, 'tertiary')
+  const primaryColor = useThemeColor({}, 'primary')
+  const secondaryColor = useThemeColor({}, 'secondary')
+
   return (
     <>
       <Drawer
         drawerContent={TabsDrawer}
         screenOptions={{
           drawerStyle: {
-            backgroundColor: colors.secondary.DEFAULT,
+            backgroundColor: bgColor,
             width: '75%',
           },
           sceneStyle: {
             paddingHorizontal: 16,
-            backgroundColor: colors.secondary.DEFAULT,
+            backgroundColor: bgColor,
           },
-          drawerActiveTintColor: '#007bff',
-          drawerInactiveTintColor: '#6c757d',
+          drawerActiveTintColor: primaryColor,
+          drawerInactiveTintColor: secondaryColor,
           headerShown: false,
           overlayColor: 'rgba(0, 0, 0, 0.3)',
         }}

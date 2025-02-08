@@ -31,7 +31,6 @@ const TabsDrawer = (props: DrawerContentComponentProps) => {
   return (
     <CView className='flex-1'>
       <DrawerContentScrollView {...props} contentContainerStyle={{ flex: 1 }}>
-        {/* Encabezado del Drawer */}
         <CView className='flex justify-center items-center mb-5 h-28'>
           <CImage
             source={images.frenecIcon}
@@ -40,7 +39,6 @@ const TabsDrawer = (props: DrawerContentComponentProps) => {
           />
         </CView>
 
-        {/* Lista de items */}
         <DrawerItemList {...props} />
       </DrawerContentScrollView>
 
