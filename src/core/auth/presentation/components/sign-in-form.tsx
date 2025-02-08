@@ -13,7 +13,12 @@ const SignInForm = () => {
     <FormProvider {...form}>
       <CImage source={images.frenecIcon} resizeMode='contain' />
 
-      <CText className='text-2xl font-medium my-4'>Bienvenido de vuelta!</CText>
+      <CText
+        className='text-2xl font-bold my-4'
+        // style={{ fontFamily: 'Inter-Bold' }}
+      >
+        Bienvenido de vuelta!
+      </CText>
 
       <RHFInput
         placeholder='chu2409'

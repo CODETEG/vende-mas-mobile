@@ -15,7 +15,15 @@ SplashScreen.preventAutoHideAsync()
 
 const RootLayout = () => {
   const [loaded] = useFonts({
-    SpaceMono: require('../src/assets/fonts/SpaceMono-Regular.ttf'),
+    Inter: require('../src/assets/fonts/Inter-Regular.otf'),
+    'Inter-Light': require('../src/assets/fonts/Inter-Light.otf'),
+    'Inter-ExtraLight': require('../src/assets/fonts/Inter-ExtraLight.otf'),
+    'Inter-Thin': require('../src/assets/fonts/Inter-Thin.otf'),
+    'Inter-ExtraBold': require('../src/assets/fonts/Inter-ExtraBold.otf'),
+    'Inter-Black': require('../src/assets/fonts/Inter-Black.otf'),
+    'Inter-Medium': require('../src/assets/fonts/Inter-Medium.otf'),
+    'Inter-SemiBold': require('../src/assets/fonts/Inter-SemiBold.otf'),
+    'Inter-Bold': require('../src/assets/fonts/Inter-Bold.otf'),
   })
   const bgColor = useThemeColor({}, 'tertiary')
 

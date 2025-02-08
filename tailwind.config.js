@@ -7,6 +7,17 @@ module.exports = {
   presets: [require('nativewind/preset')],
   theme: {
     extend: {
+      fontFamily: {
+        black: ['Inter-Black', 'sans-serif'],
+        bold: ['Inter-Bold', 'sans-serif'],
+        extraBold: ['Inter-ExtraBold', 'sans-serif'],
+        extraLight: ['Inter-ExtraLight', 'sans-serif'],
+        light: ['Inter-Light', 'sans-serif'],
+        thin: ['Inter-Thin', 'sans-serif'],
+        sans: ['Inter', 'sans-serif'],
+        medium: ['Inter-Medium', 'sans-serif'],
+        semibold: ['Inter-SemiBold', 'sans-serif'],
+      },
       colors: {
         light: {
           primary: {
