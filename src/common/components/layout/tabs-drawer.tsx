@@ -7,7 +7,7 @@ import {
 import { Ionicons } from '@expo/vector-icons'
 import CView from '@/custom-components/view'
 import CImage from '@/custom-components/image'
-import images from '@/constants/images'
+import images from '@/common/constants/images'
 import { useSignOut } from '@/core/auth/hooks/use-auth-service'
 import { router } from 'expo-router'
 import { useApiToast } from '@/common/hooks/use-api-toast'

@@ -1,16 +1,17 @@
 import { IApiResponse } from '@/config/http/api-response'
 import Toast from 'react-native-toast-message'
 
+const isProduction = process.env.NODE_ENV === 'production'
 export const showResponseToast = (response: IApiResponse<unknown>) => {
-  const isProduction = process.env.NODE_ENV === 'production'
-
   // Si no es displayable y estamos en producción, no mostramos nada
   if (!response.message.displayable && isProduction) {
     return
   }
 
+  const { success, message } = response
+
   // Para mensajes no displayable en desarrollo
-  if (!response.message.displayable) {
+  if (!message.displayable) {
     Toast.show({
       type: 'info',
       text1: '🛠 Debug Message',
@@ -28,9 +29,9 @@ export const showResponseToast = (response: IApiResponse<unknown>) => {
 
   // Para mensajes displayable
   Toast.show({
-    type: response.success ? 'success' : 'error',
-    text1: response.success ? 'Operación exitosa' : 'Ha ocurrido un error',
-    text2: response.message.content.join(' '),
+    type: success ? 'success' : 'error',
+    text1: success ? 'Operación exitosa' : 'Ha ocurrido un error',
+    text2: message.content.join(' '),
     position: 'top',
     visibilityTime: 3000,
   })

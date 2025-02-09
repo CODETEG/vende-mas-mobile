@@ -10,7 +10,7 @@
         "./src/common/components/*"
       ],
       "@/constants/*": [
-        "./src/constants/*"
+        "./src/common/constants/*"
       ],
       "@/*": [
         "./src/*"

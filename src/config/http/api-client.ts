@@ -8,7 +8,7 @@ import axios, {
 import { IApiResponse } from './api-response'
 import { tokenStorage } from '@/common/utils/token-storage'
 import { useAuthStore } from '@/core/auth/context/use-auth-store'
-import { showErrorToast, showResponseToast } from '@/common/utils/toast-util'
+import { showErrorToast, showResponseToast } from '@/common/utils/toast'
 
 class ApiClient {
   private static instance: AxiosInstance
@@ -36,39 +36,36 @@ class ApiClient {
         (error) => Promise.reject(error),
       )
 
-      // ApiClient.instance.interceptors.request.use((config) => {
-      //   eslint-disable-next-line no-console
-      //   console.log('📡 Axios Request:', {
-      //     url: process.env.EXPO_PUBLIC_API_URL + config.url!,
-      //     method: config.method,
-      //     headers: config.headers,
-      //     data: config.data,
-      //   })
-      //   return config
-      // })
-
-      // Interceptor de response
       ApiClient.instance.interceptors.response.use(
         (response: AxiosResponse<IApiResponse<unknown>>) => {
           console.log('📡 Axios Response:', response.data)
           showResponseToast(response.data)
-
           return response
         },
         async (error: AxiosError<IApiResponse<unknown>>) => {
           console.log('📡 Axios Error:', error.response?.data)
 
-          if (error.response?.status === 401) {
-            await tokenStorage.removeToken()
-
-            const clearUser = useAuthStore.getState().clearUser
-            clearUser()
-
-            showErrorToast('Vuelve a iniciar sesión')
-          } else if (error.response?.data) {
-            showResponseToast(error.response.data)
-          } else {
-            showErrorToast('Ha ocurrido un error')
+          if (error.response) {
+            // Manejo de error de autenticación
+            if (error.response.status === 401) {
+              await tokenStorage.removeToken()
+              const clearUser = useAuthStore.getState().clearUser
+              clearUser()
+              showErrorToast('Vuelve a iniciar sesión')
+            }
+            // Respuestas de error con formato válido
+            else if (error.response.data) {
+              showResponseToast(error.response.data)
+              return Promise.resolve(error.response)
+            }
+          }
+          // Errores de red o timeout
+          else if (error.request) {
+            showErrorToast('Error de conexión. Verifica tu internet')
+          }
+          // Otros errores
+          else {
+            showErrorToast('Ha ocurrido un error inesperado')
           }
 
           return Promise.reject(error)
@@ -79,15 +76,21 @@ class ApiClient {
   }
 }
 
-// Helper para tipos con genéricos
 export const apiClient = {
   get: async <T>(
     url: string,
     config?: AxiosRequestConfig,
   ): Promise<IApiResponse<T>> => {
-    const client = await ApiClient.getInstance()
-    const response = await client.get<IApiResponse<T>>(url, config)
-    return response.data
+    try {
+      const client = await ApiClient.getInstance()
+      const response = await client.get<IApiResponse<T>>(url, config)
+      return response.data
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.data) {
+        return error.response.data
+      }
+      throw error
+    }
   },
 
   post: async <T>(
@@ -95,9 +98,16 @@ export const apiClient = {
     data?: unknown,
     config?: AxiosRequestConfig,
   ): Promise<IApiResponse<T>> => {
-    const client = await ApiClient.getInstance()
-    const response = await client.post<IApiResponse<T>>(url, data, config)
-    return response.data
+    try {
+      const client = await ApiClient.getInstance()
+      const response = await client.post<IApiResponse<T>>(url, data, config)
+      return response.data
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.data) {
+        return error.response.data
+      }
+      throw error
+    }
   },
 
   put: async <T>(
@@ -105,17 +115,31 @@ export const apiClient = {
     data?: unknown,
     config?: AxiosRequestConfig,
   ): Promise<IApiResponse<T>> => {
-    const client = await ApiClient.getInstance()
-    const response = await client.put<IApiResponse<T>>(url, data, config)
-    return response.data
+    try {
+      const client = await ApiClient.getInstance()
+      const response = await client.put<IApiResponse<T>>(url, data, config)
+      return response.data
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.data) {
+        return error.response.data
+      }
+      throw error
+    }
   },
 
   delete: async <T>(
     url: string,
     config?: AxiosRequestConfig,
   ): Promise<IApiResponse<T>> => {
-    const client = await ApiClient.getInstance()
-    const response = await client.delete<IApiResponse<T>>(url, config)
-    return response.data
+    try {
+      const client = await ApiClient.getInstance()
+      const response = await client.delete<IApiResponse<T>>(url, config)
+      return response.data
+    } catch (error) {
+      if (axios.isAxiosError(error) && error.response?.data) {
+        return error.response.data
+      }
+      throw error
+    }
   },
 }

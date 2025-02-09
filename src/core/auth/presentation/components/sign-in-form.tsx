@@ -1,5 +1,5 @@
 import CImage from '@/common/components/custom/image'
-import images from '@/constants/images'
+import images from '@/common/constants/images'
 import CText from '@/common/components/custom/text'
 import { useSignInForm } from '../../hooks/use-sign-in-form'
 import { FormProvider } from 'react-hook-form'
