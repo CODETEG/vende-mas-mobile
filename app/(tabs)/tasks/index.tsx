@@ -1,11 +1,7 @@
-import { View, Text } from 'react-native'
+import TasksView from '@/core/tasks/presentation/views/tasks-view'
 
 const TasksPage = () => {
-  return (
-    <View>
-      <Text>Task</Text>
-    </View>
-  )
+  return <TasksView />
 }
 
 export default TasksPage

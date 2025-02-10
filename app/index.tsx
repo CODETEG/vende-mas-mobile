@@ -14,13 +14,15 @@ const HomePage = () => {
 
   useEffect(() => {
     const checkAuth = async () => {
-      try {
-        await validateToken.mutateAsync()
-        setIsLoading(false)
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (e) {
-        setIsLoading(false)
-      }
+      await validateToken.mutateAsync()
+      setIsLoading(false)
+      // try {
+      //   await validateToken.mutateAsync()
+      //   setIsLoading(false)
+      //   // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // } catch (e) {
+      //   setIsLoading(false)
+      // }
     }
 
     checkAuth()

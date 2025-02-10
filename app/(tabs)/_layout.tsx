@@ -3,11 +3,19 @@ import { Drawer } from 'expo-router/drawer'
 import TabsDrawer from '@/components/layout/tabs-drawer'
 import { StatusBar } from 'expo-status-bar'
 import { useThemeColor } from '@/common/hooks/use-theme-color'
+import { useAuthStore } from '@/core/auth/context/use-auth-store'
+import { Redirect } from 'expo-router'
 
 const TabsLayout = () => {
   const bgColor = useThemeColor({}, 'tertiary')
   const primaryColor = useThemeColor({}, 'primary')
   const secondaryColor = useThemeColor({}, 'secondary')
+
+  const { user } = useAuthStore()
+
+  if (!user) {
+    return <Redirect href='/' />
+  }
 
   return (
     <>
@@ -57,7 +65,7 @@ const TabsLayout = () => {
         />
       </Drawer>
 
-      <StatusBar style='inverted' />
+      <StatusBar translucent />
     </>
   )
 }
