@@ -5,9 +5,13 @@ import { StatusBar } from 'expo-status-bar'
 import { useThemeColor } from '@/common/hooks/use-theme-color'
 import { useAuthStore } from '@/core/auth/context/use-auth-store'
 import { Redirect } from 'expo-router'
+import CView from '@/custom-components/view'
+import { TouchableOpacity } from 'react-native'
+import CText from '@/custom-components/text'
+import CSafeView from '@/custom-components/safe-view'
 
 const TabsLayout = () => {
-  const bgColor = useThemeColor({}, 'tertiary')
+  const tertiaryColor = useThemeColor({}, 'tertiary')
   const primaryColor = useThemeColor({}, 'primary')
   const secondaryColor = useThemeColor({}, 'secondary')
 
@@ -23,17 +27,32 @@ const TabsLayout = () => {
         drawerContent={TabsDrawer}
         screenOptions={{
           drawerStyle: {
-            backgroundColor: bgColor,
+            backgroundColor: tertiaryColor,
             width: '75%',
           },
           sceneStyle: {
-            paddingHorizontal: 16,
-            backgroundColor: bgColor,
+            backgroundColor: tertiaryColor,
           },
           drawerActiveTintColor: primaryColor,
           drawerInactiveTintColor: secondaryColor,
-          headerShown: false,
           overlayColor: 'rgba(0, 0, 0, 0.3)',
+          // headerShown: false,
+          header: ({ options, navigation }) => (
+            <CSafeView className='flex-row items-center p-4 bg-light-primary'>
+              <TouchableOpacity
+                onPress={() => navigation.openDrawer()}
+                activeOpacity={0.7}
+              >
+                <Ionicons name='menu' size={24} color={tertiaryColor} />
+              </TouchableOpacity>
+
+              <CText className='ml-4 font-bold text-lg text-light-tertiary'>
+                {options.title}
+              </CText>
+
+              {/* Otros elementos del header */}
+            </CSafeView>
+          ),
         }}
       >
         <Drawer.Screen

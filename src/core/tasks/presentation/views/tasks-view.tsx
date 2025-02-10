@@ -22,10 +22,15 @@ const TasksView = () => {
         data={data}
         renderItem={({ item }) => <TaskItem task={item} />}
         keyExtractor={(item) => String(item.id)}
-        contentContainerStyle={{ paddingVertical: 10, gap: 15 }}
+        contentContainerStyle={{
+          paddingVertical: 4,
+          gap: 15,
+          paddingHorizontal: 16,
+        }}
         refreshControl={
           <RefreshControl refreshing={isLoading} onRefresh={refetch} />
         }
+        showsVerticalScrollIndicator={false}
       />
     </CSafeView>
   )
