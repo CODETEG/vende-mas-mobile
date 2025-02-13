@@ -2,8 +2,8 @@ export const colors = {
   light: {
     primary: '#515151',
     secondary: '#3D3D3D',
-    tertiary: '#F6F4F4',
-    support: '#FEFEFF',
+    tertiary: '#FEFEFF',
+    support: '#f2f3f3',
   },
   dark: {
     primary: '#F6F4F4',

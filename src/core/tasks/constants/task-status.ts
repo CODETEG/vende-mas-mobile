@@ -12,3 +12,16 @@ export const getTaskStatusLabel = (status: TaskStatus) => {
   }
   return translations[status]
 }
+
+export const getStatusColor = (status: TaskStatus) => {
+  switch (status) {
+    case TaskStatus.PENDING:
+      return 'text-yellow-500'
+    case TaskStatus.DONE:
+      return 'text-green-500'
+    case TaskStatus.IN_PROGRESS:
+      return 'text-blue-500'
+    default:
+      return 'text-gray-500'
+  }
+}

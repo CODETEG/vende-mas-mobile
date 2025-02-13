@@ -5,7 +5,6 @@ import { StatusBar } from 'expo-status-bar'
 import { useThemeColor } from '@/common/hooks/use-theme-color'
 import { useAuthStore } from '@/core/auth/context/use-auth-store'
 import { Redirect } from 'expo-router'
-import CView from '@/custom-components/view'
 import { TouchableOpacity } from 'react-native'
 import CText from '@/custom-components/text'
 import CSafeView from '@/custom-components/safe-view'
@@ -38,15 +37,15 @@ const TabsLayout = () => {
           overlayColor: 'rgba(0, 0, 0, 0.3)',
           // headerShown: false,
           header: ({ options, navigation }) => (
-            <CSafeView className='flex-row items-center p-4 bg-light-primary'>
+            <CSafeView className='flex-row items-center px-4 py-3 bg-light-tertiary border-b border-light-primary/20'>
               <TouchableOpacity
                 onPress={() => navigation.openDrawer()}
                 activeOpacity={0.7}
               >
-                <Ionicons name='menu' size={24} color={tertiaryColor} />
+                <Ionicons name='menu' size={24} color={secondaryColor} />
               </TouchableOpacity>
 
-              <CText className='ml-4 font-bold text-lg text-light-tertiary'>
+              <CText className='ml-4 font-bold text-lg text-light-secondary'>
                 {options.title}
               </CText>
 
@@ -64,6 +63,34 @@ const TabsLayout = () => {
             ),
           }}
         />
+
+        <Drawer.Screen
+          name='tasks/[id]/index'
+          options={{
+            header: ({ navigation }) => (
+              <CSafeView className='flex-row justify-between items-center px-4 py-3 bg-light-tertiary border-b border-light-primary/20'>
+                <TouchableOpacity
+                  onPress={() => navigation.goBack()}
+                  activeOpacity={0.7}
+                >
+                  <Ionicons
+                    name='arrow-back'
+                    size={24}
+                    color={secondaryColor}
+                  />
+                </TouchableOpacity>
+
+                <CText className='ml-4 font-bold text-lg text-light-secondary'>
+                  Detalles de Tarea
+                </CText>
+
+                {/* Otros elementos del header */}
+              </CSafeView>
+            ),
+            drawerItemStyle: { display: 'none' },
+          }}
+        />
+
         <Drawer.Screen
           name='customers/index'
           options={{
@@ -84,7 +111,7 @@ const TabsLayout = () => {
         />
       </Drawer>
 
-      <StatusBar translucent />
+      <StatusBar style='auto' />
     </>
   )
 }
