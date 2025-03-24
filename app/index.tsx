@@ -40,7 +40,7 @@ const HomePage = () => {
   }
 
   return user ? (
-    <Redirect href={'/(tabs)/tasks'} />
+    <Redirect href={'/(menus)/tasks'} />
   ) : (
     // <CView>
     //   <CText>Home Page</CText>

@@ -53,7 +53,7 @@ const RootLayout = () => {
 
             <Stack.Screen name='(auth)' />
 
-            <Stack.Screen name='(tabs)' />
+            <Stack.Screen name='(menus)' />
           </Stack>
 
           <StatusBar style='inverted' />

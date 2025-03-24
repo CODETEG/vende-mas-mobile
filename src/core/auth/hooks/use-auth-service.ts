@@ -19,7 +19,7 @@ export const useSignIn = () => {
         const user = await authApi.getMe()
         setUser(user)
 
-        router.replace('/(tabs)/tasks')
+        router.replace('/(menus)/tasks')
       }
 
       return data!

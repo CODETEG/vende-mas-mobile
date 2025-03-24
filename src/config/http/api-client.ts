@@ -38,7 +38,7 @@ class ApiClient {
 
       ApiClient.instance.interceptors.response.use(
         (response: AxiosResponse<IApiResponse<unknown>>) => {
-          console.log('📡 Axios Response:', response.data)
+          // console.log('📡 Axios Response:', response.data)
           showResponseToast(response.data)
           return response
         },

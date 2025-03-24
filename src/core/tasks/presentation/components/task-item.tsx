@@ -8,7 +8,7 @@ import CText from '@/custom-components/text'
 import { router } from 'expo-router'
 
 const onPress = (id: number) => {
-  router.push(`/(tabs)/tasks/${id}`)
+  router.push(`/(menus)/tasks/${id}`)
 }
 
 const TaskItem = ({ task }: { task: ITaskWithCustomerEmployee }) => {
